@@ -1,28 +1,27 @@
 version: 2
 jobs:
- build:
-   machine: true
-   steps:
-     - checkout
-
-     # build the application image
-     - run: docker build -t temptemp .
- deploy:
-     machine: true
-     - run:
-         name: Some-command
-         command: |
-             ls -al
+    build:
+        machine: true
+    steps:
+        - checkout
+        # build the application image
+        - run: docker build -t temptemp .
+    deploy:
+        machine: true
+        - run:
+            name: Some-command
+            command: |
+            ls -al
 
 workflows:
-  version: 2
-  build_and_deploy:
-    jobs:
-      - build
-      - hold:
-          type: approval
-          requires:
-              - build
-      - deploy:
-          requires:
-              - hold
+    version: 2
+    build_and_deploy:
+        jobs:
+            - build
+            - hold:
+                type: approval
+                requires:
+                    - build
+            - deploy:
+                requires:
+                    - hold
