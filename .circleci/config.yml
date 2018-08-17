@@ -2,10 +2,10 @@ version: 2
 jobs:
     build:
         machine: true
-    steps:
-        - checkout
-        # build the application image
-        - run: docker build -t temptemp .
+        steps:
+            - checkout
+            # build the application image
+            - run: docker build -t temptemp .
     deploy:
         machine: true
         steps:
@@ -13,7 +13,6 @@ jobs:
                 name: Some-command
                 command: |
                 ls -al
-
 workflows:
     version: 2
     build_and_deploy:
