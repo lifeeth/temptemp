@@ -8,10 +8,11 @@ jobs:
         - run: docker build -t temptemp .
     deploy:
         machine: true
-        - run:
-            name: Some-command
-            command: |
-            ls -al
+        steps:
+            - run:
+                name: Some-command
+                command: |
+                ls -al
 
 workflows:
     version: 2
